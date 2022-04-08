@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/Users/julia/Documents/NetBeansProjects/disenoWeb_Evidencia2/src/java/Controlador/controlador.java</file>
             <file>file:/C:/Users/julia/Documents/NetBeansProjects/disenoWeb_Evidencia2/web/Principal.jsp</file>
-            <file>file:/C:/Users/julia/Documents/NetBeansProjects/disenoWeb_Evidencia2/web/AltaCliente.jsp</file>
+            <file>file:/C:/Users/julia/Documents/NetBeansProjects/disenoWeb_Evidencia2/web/index.jsp</file>
             <file>file:/C:/Users/julia/Documents/NetBeansProjects/disenoWeb_Evidencia2/src/java/Controlador/Validar.java</file>
+            <file>file:/C:/Users/julia/Documents/NetBeansProjects/disenoWeb_Evidencia2/web/Login.jsp</file>
+            <file>file:/C:/Users/julia/Documents/NetBeansProjects/disenoWeb_Evidencia2/src/java/Modelo/Cliente.java</file>
+            <file>file:/C:/Users/julia/Documents/NetBeansProjects/disenoWeb_Evidencia2/src/java/Modelo/Conexion.java</file>
             <file>file:/C:/Users/julia/Documents/NetBeansProjects/disenoWeb_Evidencia2/src/java/Modelo/ClienteSQL.java</file>
         </group>
     </open-files>

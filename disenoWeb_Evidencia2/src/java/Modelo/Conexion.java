@@ -6,6 +6,7 @@ package Modelo;
 
 import java.awt.HeadlessException;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *

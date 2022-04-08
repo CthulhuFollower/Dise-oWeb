@@ -5,7 +5,7 @@
         <servlet-class>Controlador.controlador</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Validad</servlet-name>
+        <servlet-name>Validar</servlet-name>
         <servlet-class>Controlador.Validar</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -13,8 +13,8 @@
         <url-pattern>/controlador</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Validad</servlet-name>
-        <url-pattern>/Validad</url-pattern>
+        <servlet-name>Validar</servlet-name>
+        <url-pattern>/Validar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

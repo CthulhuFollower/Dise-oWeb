@@ -11,7 +11,7 @@
         <div class="container mt-4 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <form class="form-sign" action="Validad" method="POST">
+                    <form class="form-sign" action="Validar" method="POST">
                         <div class="form-group text-center">
                             <img src="imagenes/logo.png" alt="70" width="170"/><br>
                             <label>Banco Mercantil de México</label>

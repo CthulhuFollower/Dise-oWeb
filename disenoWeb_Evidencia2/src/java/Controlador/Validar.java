@@ -6,12 +6,15 @@ package Controlador;
 
 import Modelo.Cliente;
 import Modelo.ClienteSQL;
+import Modelo.Cuenta;
+import Modelo.CuentaSQL;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,8 +22,10 @@ import javax.swing.JOptionPane;
  * @author julia
  */
 public class Validar extends HttpServlet {
-    
+
     ClienteSQL clienteSQL = new ClienteSQL();
+    CuentaSQL cuentaSQL = new CuentaSQL();
+    Cuenta cuenta = new Cuenta();
     Cliente cliente = new Cliente();
 
     /**
@@ -77,14 +82,17 @@ public class Validar extends HttpServlet {
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
         try {
-            if (accion.equalsIgnoreCase("Ingresar")) {
+            if (accion.equals("Ingresar")) {
                 int numeroCliente = Integer.parseInt(request.getParameter("txtCliente"));
                 String password = request.getParameter("txtPassword");
-                
+
                 cliente = clienteSQL.validar(numeroCliente, password);
-                
-                if (cliente.getNombre()!= null) {
-                    request.getRequestDispatcher("controlador?accion=Principal").forward(request, response);
+
+                if (cliente.getNombre() != null) {
+                    HttpSession sesion = request.getSession(false);
+                    sesion.setAttribute("CuentasUsuario", cuentaSQL.getListaCuentas(numeroCliente));
+                    sesion.setAttribute("nivel", cuentaSQL.getPermisos(numeroCliente));
+                    request.getRequestDispatcher("controlador?menu=Principal&accion=nada").forward(request, response);
                 }
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);

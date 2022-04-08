@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ListaClientes
-    Created on : 6 abr. 2022, 17:18:48
+    Document   : ListaCuentas
+    Created on : 7 abr. 2022, 19:15:55
     Author     : julia
 --%>
 
@@ -21,39 +21,26 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Lista clientes</h1>
+        <h1>Lista Cuentas</h1>
         <table border="1">
             <tr>
                 <th>Id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Direccion</th>
-                <th>Postal</th>
-                <th>Ciudad</th>
-                <th>Estado</th>
-                <th>Pais</th>
-                <th>Telefono</th>
-                <th>Correo</th>
-                <th>Nacimiento</th>
                 <th>Numero de Cliente</th>
+                <th>Numero de Cuenta</th>
+                <th>Tipo de Cuenta</th>
+                <th>Saldo</th>
+                <th>Fecha</th>
             </tr>
-            <c:forEach var="obj" items="${listaClientes}">
+            <c:forEach var="obj" items="${listaCuentas}">
                 <tr>
-                    <td>${obj.getId()}</td>
-                    <td>${obj.getNombre()}</td>
-                    <td>${obj.getApellidos()}</td>
-                    <td>${obj.getDireccion()}</td>
-                    <td>${obj.getPostal()}</td>
-                    <td>${obj.getCiudad()}</td>
-                    <td>${obj.getEstado()}</td>
-                    <td>${obj.getPais()}</td>
-                    <td>${obj.getTelefono()}</td>
-                    <td>${obj.getCorreo()}</td>
-                    <td>${obj.getNacimiento()}</td>
+                    <td>${obj.getIdCuenta()}</td>
                     <td>${obj.getNumeroCliente()}</td>
+                    <td>${obj.getNumeroCuenta()}</td>
+                    <td>${obj.getTipoCuenta()}</td>
+                    <td>${obj.getSaldo()}</td>
+                    <td>${obj.getFecha()}</td>
                     <td>
-                        <a class="btn btn-warning" href="controlador?menu=DetallesCliente&accion=Detalles&numeroCliente=${obj.getNumeroCliente()}">Modificar Cliente</a>
-                        <a class="btn btn-info" href="controlador?menu=ListarCuentas&accion=ninguna&numeroCliente=${obj.getNumeroCliente()}">Modificar Cuentas</a>
+                        <a class="btn btn-warning" href="controlador?menu=DetallesCuenta&accion=Detalles&numeroCliente=${obj.getNumeroCliente()}&numeroCuenta=${obj.getNumeroCuenta()}">Modificar Cuenta</a>
                     </td>
                 </tr>
             </c:forEach>

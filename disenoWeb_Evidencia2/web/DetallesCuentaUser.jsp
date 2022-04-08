@@ -1,16 +1,17 @@
 <%-- 
-    Document   : AltaCuenta
-    Created on : 6 abr. 2022, 17:17:50
+    Document   : DetallesCuentaUser
+    Created on : 7 abr. 2022, 20:54:14
     Author     : julia
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <%
             HttpSession sesion = request.getSession(false);
-            if (sesion.getAttribute("nivel").equals("USUARIO")) {
+            if (!sesion.getAttribute("nivel").equals("USUARIO")) {
                 request.getRequestDispatcher("controlador?menu=Principal&accion=nada").forward(request, response);
             }
         %>
@@ -20,33 +21,30 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Alta de Cuenta</h1>
-        <div class="card"> 
-            <div class="card-body">
-                <form action="controlador?menu=AltaCuenta" method="POST">
+        <h1>Detalles de Cuentas</h1>
+            <c:forEach var="obj" items="${listaCuentas}">
                     <div class="form-group">
                         <label>Numero de Cliente</label>
-                        <input type="text" name="NumeroCliente" class="form-control">
+                        <input type="text" contenteditable="false" value="${obj.getNumeroCliente()}" name="NumeroCliente" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Numero de Cuenta</label>
-                        <input type="text" name="NumeroCuenta" class="form-control">
+                        <input type="text" contenteditable="false" value="${obj.getNumeroCuenta()}" name="NumeroCuenta" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Tipo Cuenta</label>
-                        <input type="text" name="TipoCuenta" class="form-control">
+                        <label>Tipo de Cuenta</label>
+                        <input type="text" contenteditable="false" value="${obj.getTipoCuenta()}" name="TipoCuenta" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Saldo</label>
-                        <input type="text" name="Saldo" class="form-control">
+                        <input type="text" contenteditable="false" value="${obj.getSaldo()}" name="Saldo" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Fecha (YYYY-MM-DD)</label>
-                        <input type="text" name="Fecha" class="form-control">
+                        <label>Fecha</label>
+                        <input type="text" contenteditable="false" value="${obj.getFecha()}" name="Fecha" class="form-control">
                     </div>
-                    <input type="submit" name="accion" value="Dar Alta Cuenta" class="btn btn-primary">
-                </form>
-            </div>
-        </div>
+                    <br>--------------------------------------------------<br>
+            </c:forEach>
+
     </body>
 </html>

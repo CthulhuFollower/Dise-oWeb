@@ -1,17 +1,18 @@
 <%-- 
-    Document   : AltaCuenta
-    Created on : 6 abr. 2022, 17:17:50
+    Document   : DetallesCuenta
+    Created on : 6 abr. 2022, 17:18:24
     Author     : julia
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <%
             HttpSession sesion = request.getSession(false);
-            if (sesion.getAttribute("nivel").equals("USUARIO")) {
-                request.getRequestDispatcher("controlador?menu=Principal&accion=nada").forward(request, response);
+            if (sesion.getAttribute("nivel").equals("ADMINISTRADOR")) {
+                
             }
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,31 +21,31 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Alta de Cuenta</h1>
+        <h1>Detalles de Cuenta</h1>
         <div class="card"> 
             <div class="card-body">
-                <form action="controlador?menu=AltaCuenta" method="POST">
+                <form action="controlador?menu=DetallesCuenta&numeroCliente=${cuentaModificar.getNumeroCliente()}&numeroCuenta=${cuentaModificar.getNumeroCuenta()}" method="POST">
                     <div class="form-group">
                         <label>Numero de Cliente</label>
-                        <input type="text" name="NumeroCliente" class="form-control">
+                        <input type="text" value="${cuentaModificar.getNumeroCliente()}" name="NumeroCliente" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Numero de Cuenta</label>
-                        <input type="text" name="NumeroCuenta" class="form-control">
+                        <input type="text" value="${cuentaModificar.getNumeroCuenta()}" name="NumeroCuenta" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Tipo Cuenta</label>
-                        <input type="text" name="TipoCuenta" class="form-control">
+                        <label>Tipo de Cuenta</label>
+                        <input type="text" value="${cuentaModificar.getTipoCuenta()}" name="TipoCuenta" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Saldo</label>
-                        <input type="text" name="Saldo" class="form-control">
+                        <input type="text" value="${cuentaModificar.getSaldo()}" name="Saldo" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Fecha (YYYY-MM-DD)</label>
-                        <input type="text" name="Fecha" class="form-control">
+                        <label>Fecha</label>
+                        <input type="text" value="${cuentaModificar.getFecha()}" name="Fecha" class="form-control">
                     </div>
-                    <input type="submit" name="accion" value="Dar Alta Cuenta" class="btn btn-primary">
+                    <input type="submit" name="accion" value="Modificar" class="btn btn-primary">
                 </form>
             </div>
         </div>

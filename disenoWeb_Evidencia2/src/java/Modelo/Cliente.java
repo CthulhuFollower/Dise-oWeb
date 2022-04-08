@@ -24,11 +24,6 @@ public class Cliente {
     private String Nacimiento;
     private int NumeroCliente;
     private String Password;
-    private Float Saldo;
-    private String TipoCuenta;
-    private int NumeroCuenta;
-    
-    
 
     public int getId() {
         return idCliente;
@@ -133,31 +128,4 @@ public class Cliente {
     public void setPassword(String Password) {
         this.Password = Password;
     }
-
-    public Float getSaldo() {
-        return Saldo;
-    }
-
-    public void setSaldo(Float Saldo) {
-        this.Saldo = Saldo;
-    }
-
-    public String getTipoCuenta() {
-        return TipoCuenta;
-    }
-
-    public void setTipoCuenta(String TipoCuenta) {
-        this.TipoCuenta = TipoCuenta;
-    }
-
-    public int getNumeroCuenta() {
-        return NumeroCuenta;
-    }
-
-    public void setNumeroCuenta(int NumeroCuenta) {
-        this.NumeroCuenta = NumeroCuenta;
-    }
-    
-    
-    
 }

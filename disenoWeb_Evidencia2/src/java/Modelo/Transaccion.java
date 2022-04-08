@@ -9,12 +9,37 @@ package Modelo;
  * @author julia
  */
 public class Transaccion {
-    
+    /*<%
+            HttpSession sesion = request.getSession(false);
+            if (!sesion.getAttribute("nivel").equals("USUARIO")) {
+                JOptionPane.showMessageDialog(null, "Nel prro");
+                request.getRequestDispatcher("controlador?menu=Principal&accion=nada").forward(request, response);
+            }
+        %>*/
     private int idTransaccion;
-    private int idCliente;
+    private int NumeroCliente;
     private int idDestino;
     private float Monto;
     private String fecha;
+    private String tipoCuenta;
+    
+    java.util.Date date = new java.util.Date();
+
+    public void fechaHoy() {
+        long timeInMilliSeconds = date.getTime();
+        java.sql.Date date1 = new java.sql.Date(timeInMilliSeconds);
+        setFecha("" + date1);
+    }
+
+    public String getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    public void setTipoCuenta(String tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
+    }
+    
+    
 
     public int getIdTransaccion() {
         return idTransaccion;
@@ -24,12 +49,12 @@ public class Transaccion {
         this.idTransaccion = idTransaccion;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public int getNumeroCliente() {
+        return NumeroCliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setNumeroCliente(int NumeroCliente) {
+        this.NumeroCliente = NumeroCliente;
     }
 
     public int getIdDestino() {

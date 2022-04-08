@@ -6,6 +6,7 @@ package Modelo;
 
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,16 +18,19 @@ public class TransaccionSQL extends Conexion {
         PreparedStatement ps = null;
         Connection con = getConection();
 
-        String sql = "INSERT INTO transacciones (idCliente, idDestino, Monto,"
-                + " Fecha) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO transacciones (NumeroCliente, NumeroDestino, Monto,"
+                + " Fecha, TipoCuenta) VALUES(?,?,?,?,?)";
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, transaccion.getIdCliente());
+            ps.setInt(1, transaccion.getNumeroCliente());
             ps.setInt(2, transaccion.getIdDestino());
             ps.setFloat(3, transaccion.getMonto());
             ps.setString(4, transaccion.getFecha());
+            ps.setString(5, transaccion.getTipoCuenta());
+            JOptionPane.showMessageDialog(null, transaccion.getTipoCuenta());
             ps.execute();
+            JOptionPane.showMessageDialog(null, "Si se pudo?");
             return true;
         } catch (Exception e) {
             System.err.println(e);
@@ -44,11 +48,11 @@ public class TransaccionSQL extends Conexion {
         PreparedStatement ps = null;
         Connection con = getConection();
 
-        String sql = "UPDATE transacciones SET idCliente=?, idDestino=?, Monto=?, Fecha=? WHERE idTransacciones=?";
+        String sql = "UPDATE transacciones SET NumeroCliente=?, idDestino=?, Monto=?, Fecha=? WHERE idTransacciones=?";
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, transaccion.getIdCliente());
+            ps.setInt(1, transaccion.getNumeroCliente());
             ps.setInt(2, transaccion.getIdDestino());
             ps.setFloat(3, transaccion.getMonto());
             ps.setString(4, transaccion.getFecha());
@@ -104,7 +108,7 @@ public class TransaccionSQL extends Conexion {
             rs = ps.executeQuery();
             if (rs.next()) {
                 transaccion.setIdTransaccion(rs.getInt("idTransacciones"));
-                transaccion.setIdCliente(rs.getInt("idCliente"));
+                transaccion.setNumeroCliente(rs.getInt("idCliente"));
                 transaccion.setIdDestino(rs.getInt("idDestino"));
                 transaccion.setMonto(rs.getFloat("Monto"));
                 transaccion.setFecha(rs.getString("Fecha"));
@@ -123,7 +127,10 @@ public class TransaccionSQL extends Conexion {
         }
     }
 
-    public ArrayList<Transaccion> getListaClientes(Transaccion transaccion) {
+    //AQUI ME QUEDE 
+    //YA ES EL FINAL BIEN HECHO MUCHACHO
+    //LO HAS LOGRADO TU SOLO NO LO OLVIDES :3
+    public ArrayList<Transaccion> getListaTransferencias(Transaccion transaccion) {
         ArrayList<Transaccion> lista = new ArrayList<Transaccion>();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -133,12 +140,12 @@ public class TransaccionSQL extends Conexion {
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, transaccion.getIdCliente());
+            ps.setInt(1, transaccion.getNumeroCliente());
             rs = ps.executeQuery();
             while (rs.next()) {
                 Transaccion transacciones = new Transaccion();
                 transacciones.setIdTransaccion(rs.getInt("idTransacciones"));
-                transacciones.setIdCliente(rs.getInt("idCliente"));
+                transacciones.setNumeroCliente(rs.getInt("idCliente"));
                 transacciones.setIdDestino(rs.getInt("idDestino"));
                 transacciones.setMonto(rs.getFloat("Monto"));
                 transacciones.setFecha(rs.getString("Fecha"));
