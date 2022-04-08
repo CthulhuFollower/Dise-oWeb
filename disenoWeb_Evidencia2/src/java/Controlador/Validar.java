@@ -91,6 +91,7 @@ public class Validar extends HttpServlet {
                 if (cliente.getNombre() != null) {
                     HttpSession sesion = request.getSession(false);
                     sesion.setAttribute("CuentasUsuario", cuentaSQL.getListaCuentas(numeroCliente));
+                    sesion.setAttribute("numeroCliente", numeroCliente);
                     sesion.setAttribute("nivel", cuentaSQL.getPermisos(numeroCliente));
                     request.getRequestDispatcher("controlador?menu=Principal&accion=nada").forward(request, response);
                 }

@@ -15,6 +15,12 @@ public class Transaccion {
                 JOptionPane.showMessageDialog(null, "Nel prro");
                 request.getRequestDispatcher("controlador?menu=Principal&accion=nada").forward(request, response);
             }
+    <%
+            HttpSession sesion = request.getSession(false);
+            if (sesion.getAttribute("nivel").equals("USUARIO")) {
+                request.getRequestDispatcher("controlador?menu=Principal&accion=nada").forward(request, response);
+            }
+        %>
         %>*/
     private int idTransaccion;
     private int NumeroCliente;

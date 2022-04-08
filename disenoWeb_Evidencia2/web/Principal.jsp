@@ -21,7 +21,7 @@
                     <a class="nav-link active" aria-current="page" href="controlador?menu=Principal">Home</a>
                     <a class="nav-link active" aria-current="page" href="controlador?menu=DetallesCuenta&accion=user" target="myFrame">Detalles de Cuenta</a>
                     <a class="nav-link active" aria-current="page" href="controlador?menu=Transferencias&accion=nada" target="myFrame">Transferencias</a>
-                    <a class="nav-link active" aria-current="page" href="controlador?menu=ListaTransferencias" target="myFrame">Lista de Transferencias</a>
+                    <a class="nav-link active" aria-current="page" href="controlador?menu=ListarTransferencias&accion=nada" target="myFrame">Lista de Transferencias</a>
                     
                     <a class="nav-link" aria-current="page" href="controlador?menu=AltaCliente&accion=nada" target="myFrame">Alta de Cliente</a>
                     <a class="nav-link" aria-current="page" href="controlador?menu=AltaCuenta&accion=nada" target="myFrame">Alta de Cuenta</a>

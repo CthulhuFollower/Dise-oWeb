@@ -194,10 +194,17 @@ public class controlador extends HttpServlet {
         }
         
         if (menu.equals("ListarTransferencias")) {
-            numeroCliente = Integer.parseInt(request.getParameter("numeroCliente"));
-            cuentas = cuentaSQL.getListaCuentas(numeroCliente);
-            request.setAttribute("listaCuentas", cuentas);
-            request.getRequestDispatcher("ListaCuentas.jsp").forward(request, response);
+            /*
+            transacciones = transaccionSQL.getListaTransferencias(numeroCliente);
+            request.setAttribute("listaTransacciones", transacciones);
+            request.getRequestDispatcher("ListaTransferencias.jsp").forward(request, response);*/
+            //Esto esta bien
+            HttpSession sesion = request.getSession(false);
+            numeroCliente = (Integer) sesion.getAttribute("numeroCliente");
+            //Test
+            transacciones = transaccionSQL.getListaTransferencias(numeroCliente);
+            request.setAttribute("listaTrasferencias", transacciones);
+            request.getRequestDispatcher("ListaTransferencias.jsp").forward(request, response);
         }
         
         if (menu.equals("ListarCuentas")) {

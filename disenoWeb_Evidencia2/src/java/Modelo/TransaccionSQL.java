@@ -127,32 +127,32 @@ public class TransaccionSQL extends Conexion {
         }
     }
 
-    //AQUI ME QUEDE 
-    //YA ES EL FINAL BIEN HECHO MUCHACHO
-    //LO HAS LOGRADO TU SOLO NO LO OLVIDES :3
-    public ArrayList<Transaccion> getListaTransferencias(Transaccion transaccion) {
+    public ArrayList<Transaccion> getListaTransferencias(int numeroCliente) {
         ArrayList<Transaccion> lista = new ArrayList<Transaccion>();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConection();
-
-        String sql = "SELECT * FROM transacciones WHERE idCliente=?";
-
+        
+        String sql = "SELECT * FROM transacciones WHERE NumeroCliente=?";
+        
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, transaccion.getNumeroCliente());
+            ps.setInt(1, numeroCliente);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Transaccion transacciones = new Transaccion();
                 transacciones.setIdTransaccion(rs.getInt("idTransacciones"));
-                transacciones.setNumeroCliente(rs.getInt("idCliente"));
-                transacciones.setIdDestino(rs.getInt("idDestino"));
+                transacciones.setNumeroCliente(rs.getInt("NumeroCliente"));
+                transacciones.setIdDestino(rs.getInt("NumeroDestino"));
                 transacciones.setMonto(rs.getFloat("Monto"));
                 transacciones.setFecha(rs.getString("Fecha"));
+                transacciones.setTipoCuenta(rs.getString("TipoCuenta"));
                 lista.add(transacciones);
             }
+            JOptionPane.showMessageDialog(null, lista.get(0).getTipoCuenta());
             return lista;
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Salio mall");
             System.err.println(e);
             return lista;
         } finally {
