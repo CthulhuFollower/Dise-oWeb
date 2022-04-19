@@ -1,0 +1,17 @@
+.mt-4{
+    margin-top: 5rem!important;
+}
+
+.card{
+    border-color: green;
+    border-style: solid;
+    border-width: 3px;
+}
+
+.form-group{
+    margin-bottom: 1rem!important;
+}
+
+body{
+    background-image: url("../IMAGENES/PizzaBackGround.jpg");
+}
